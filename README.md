@@ -88,7 +88,7 @@ $ yarn install
 # Run Aplication
 $ yarn start
 ```
-Go to http://localhost:3000/ to see the result.
+Go to http://localhost:3000/ to see the result!
 
 ### 📱 Run Mobile Project
 To run the mobile project you need a cellphone with the app of [expo](https://play.google.com/store/apps/details?id=host.exp.exponent) instaled or a emulator android/ios.
@@ -111,3 +111,5 @@ Aferter read the QRCode with the app of [expo](https://play.google.com/store/app
 # :bug: Issues
 
 Feel free to **file a new issue** with a respective title and description on the the [Proffy](https://github.com/Rafaeldsa/Proffy/issues) repository. If you already found a solution to your problem, **i would love to review your pull request**!
+
+:tada:
