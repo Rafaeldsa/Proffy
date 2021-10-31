@@ -10,21 +10,21 @@ import api from '../../services/api';
 import './styles.css';
 
 function TeacherList() {
-  const [teachers, setTeachers] = useState([]);
+  const [teachers, setTeachers] = useState<any[]>([]);
 
   const [subject, setSubject] = useState('');
   const [week_day, setWeekDay] = useState('');
   const [time, setTime] = useState('');
 
-  async function searchTeachers(e: FormEvent) {
-    e.preventDefault();
+  async function searchTeachers(event: FormEvent) {
+    event.preventDefault();
 
     const response = await api.get('classes', {
       params: {
         subject,
         week_day,
-        time,
-      },
+        time
+      }
     });
 
     setTeachers(response.data);
@@ -49,7 +49,7 @@ function TeacherList() {
               { value: 'História', label: 'História' },
               { value: 'Matemática', label: 'Matemática' },
               { value: 'Português', label: 'Português' },
-              { value: 'Química', label: 'Química' },
+              { value: 'Química', label: 'Química' }
             ]}
           />
           <Select
@@ -64,7 +64,7 @@ function TeacherList() {
               { value: '3', label: 'Quarta-feira' },
               { value: '4', label: 'Quinta-feira' },
               { value: '5', label: 'Sexta-feira' },
-              { value: '6', label: 'Sábado' },
+              { value: '6', label: 'Sábado' }
             ]}
           />
           <Input
