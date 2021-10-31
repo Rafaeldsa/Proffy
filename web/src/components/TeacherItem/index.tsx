@@ -21,10 +21,12 @@ export interface TeacherItemProps {
 }
 
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
-  function createNewConnection() {
-    api.post('connections', {
-      user_id: teacher.id,
-    });
+  async function createNewConnection() {
+    try {
+      await api.post('connections', {
+        user_id: teacher.id
+      });
+    } catch (error) {}
   }
 
   return (
@@ -46,6 +48,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
         <a
           onClick={createNewConnection}
           target="_blank"
+          rel="noopener noreferrer"
           href={`https://wa.me/${teacher.whatsapp}`}
         >
           <img src={whatsappIcon} alt="Whatsapp" />

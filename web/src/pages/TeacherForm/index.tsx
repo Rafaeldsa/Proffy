@@ -16,7 +16,7 @@ function TeacherForm() {
   const history = useHistory();
 
   const [scheduleItems, setScheduleItems] = useState([
-    { week_day: '0', from: '', to: '' },
+    { week_day: '0', from: '', to: '' }
   ]);
 
   const [name, setName] = useState('');
@@ -47,37 +47,36 @@ function TeacherForm() {
     setScheduleItems(updatedScheduleItems);
   }
 
-  function handleCreateClass(e: FormEvent) {
-    e.preventDefault();
+  async function handleCreateClass(event: FormEvent) {
+    event.preventDefault();
 
-    api
-      .post('classes', {
+    try {
+      await api.post('classes', {
         name,
         avatar,
         whatsapp,
         bio,
         subject,
         cost: Number(cost),
-        schedule: scheduleItems,
-      })
-      .then(() => {
-        alert('Cadastro realizado com sucesso!');
-
-        history.push('/');
-      })
-      .catch(() => {
-        alert('Erro no Cadastro!');
+        schedule: scheduleItems
       });
 
-    console.log({
-      name,
-      avatar,
-      whatsapp,
-      bio,
-      subject,
-      cost,
-      scheduleItems,
-    });
+      alert('Cadastro realizado com sucesso!');
+
+      history.push('/');
+    } catch (error) {
+      alert('Erro no Cadastro!');
+    }
+
+    // console.log({
+    //   name,
+    //   avatar,
+    //   whatsapp,
+    //   bio,
+    //   subject,
+    //   cost,
+    //   scheduleItems
+    // });
   }
 
   return (
@@ -136,7 +135,7 @@ function TeacherForm() {
                 { value: 'História', label: 'História' },
                 { value: 'Matemática', label: 'Matemática' },
                 { value: 'Português', label: 'Português' },
-                { value: 'Química', label: 'Química' },
+                { value: 'Química', label: 'Química' }
               ]}
             />
             <Input
@@ -172,7 +171,7 @@ function TeacherForm() {
                       { value: '3', label: 'Quarta-feira' },
                       { value: '4', label: 'Quinta-feira' },
                       { value: '5', label: 'Sexta-feira' },
-                      { value: '6', label: 'Sábado' },
+                      { value: '6', label: 'Sábado' }
                     ]}
                   />
                   <Input
